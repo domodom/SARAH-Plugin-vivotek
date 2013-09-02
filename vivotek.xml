@@ -1,0 +1,17 @@
+﻿<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="ruleVivotek" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+  <rule id="ruleVivotek" scope="public">
+    <example>Sarah affiche la caméra</example>
+    <tag>out.action=new Object(); </tag>
+    <item>Sarah</item>
+	
+     <one-of>
+	  	<item>affiche la caméra <tag>out.action.commande="affiche";</tag></item>
+	  	<item>Redémarre la caméra <tag>out.action.commande="reboot";</tag></item>
+	  	<item>réinitialise la caméra <tag>out.action.commande="redemarre";</tag></item>			
+	  	<item>prends une photo avec la caméra<tag>out.action.commande="capture";</tag></item>
+    </one-of> 
+	
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/vivotek";</tag>
+  </rule>
+</grammar>
+             
