@@ -1,7 +1,7 @@
 exports.action = function(data, callback, config, SARAH){
 	var url="";
 
-	// Récuperation de la config
+	// Vérification de la configuration
 	config = config.modules.vivotek;
 	
 	if (config.adresse_ip == "[FIXME]"){
@@ -48,22 +48,35 @@ exports.action = function(data, callback, config, SARAH){
 	var _Player = "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe";
 	var _Navigation = "C:\\Program Files\\Mozilla Firefox\\firefox.exe";
 	
+	//
+	var _reboot = 'cgi-bin/admin/setparam.cgi?system_reset=0';
+	//var _infrarouge = 'cgi-bin/admin/setparam.cgi?ircutcontrol_disableirled=1';
+
+	var _IR_Mode_Auto ='cgi-bin/admin/setparam.cgi?ircutcontrol_mode=auto';
+	var _IR_Mode_Jour ='cgi-bin/admin/setparam.cgi?ircutcontrol_mode=day';
+	var _IR_Mode_Nuit ='cgi-bin/admin/setparam.cgi?ircutcontrol_mode=night';
+
+	var _Enable_PrivacyMask ='cgi-bin/admin/setparam.cgi?privacymask_c0_enable=1';
+	var _Disable_PrivacyMask ='cgi-bin/admin/setparam.cgi?privacymask_c0_enable=0';
+	
+	var _temp ='45000';
 	
 
 	
 	if (data.commande) {
 	
 		 if (data.commande == "redemarre" || data.commande == "redemarre") {
-			// redemarre la camera : reinitialisation
-			url = _urlcamera + _reboot;
-			//console.log("Envoi de la requete a : " + url);
+			
+			 // redémarrage de la camera
+			url = 'http://' + _authentification + _Ip_Camera + _reboot;
+			
 			var request = require('request');
 			request({ 'uri' : url }, function (err, response, body){					
 			if (err || response.statusCode != 200) {
 				callback({'tts': "L'action a échoué"}); return;
 			}
-				callback({'tts': "La caméra redémarre !"});
-				setTimeout(function(){SARAH.speak("La caméra est de nouveau disponible !");}, _delai_reset);
+				callback({'tts': "La caméra est en cours de redémarrage"});
+				setTimeout(function(){SARAH.speak("La caméra est de nouveau disponible !");}, _temp);
 				return;
 			});
 		}
@@ -71,13 +84,11 @@ exports.action = function(data, callback, config, SARAH){
 		else if (data.commande == "capture" || data.commande == "capture") {
 			
 			SARAH.remote({ 'run' : _Navigation, 'runp' : 'http://' + _authentification + _Ip_Camera + _capture });
-				return callback({'tts': "La photo à été prise !"});
+			return callback({'tts': "La photo à été prise !"});
 			
 			
 			
-			url = 'http://' + _authentification + _Ip_Camera + _capture;
-			// Prend une photo
-			//console.log("Envoi de la requete a : " + url);
+			//url = 'http://' + _authentification + _Ip_Camera + _capture;
 			var request = require('request');
 			request({ 'uri' : url }, function (err, response, body){			
 				if (err || response.statusCode != 200) {
@@ -91,15 +102,88 @@ exports.action = function(data, callback, config, SARAH){
 			});
 		}		
 
+		else if (data.commande == "irmodeauto" || data.commande == "irmodeauto") {
+			
+			 // infrarouge de la camera en mode auto
+			url = 'http://' + _authentification + _Ip_Camera + _IR_Mode_Auto;
+			
+			var request = require('request');
+			request({ 'uri' : url }, function (err, response, body){					
+			if (err || response.statusCode != 200) {
+				callback({'tts': "L'action a échoué"}); return;
+			}
+				callback({'tts': "L'infrarouge de la caméra est en mode auto"});
+				return;
+			});
+		}
+		 
+		else if (data.commande == "irmodejour" || data.commande == "irmodejour") {
+			
+			 // infrarouge de la camera en mode Jour
+			url = 'http://' + _authentification + _Ip_Camera + _IR_Mode_Jour;
+			
+			var request = require('request');
+			request({ 'uri' : url }, function (err, response, body){					
+			if (err || response.statusCode != 200) {
+				callback({'tts': "L'action a échoué"}); return;
+			}
+				callback({'tts': "L'infrarouge de la caméra est en mode jour"});
+				return;
+			});
+		}
+		 
+		else if (data.commande == "irmodenuit" || data.commande == "irmodenuit") {
+			
+			 // infrarouge de la camera en mode Nuit
+			url = 'http://' + _authentification + _Ip_Camera + _IR_Mode_Nuit;
+			
+			var request = require('request');
+			request({ 'uri' : url }, function (err, response, body){					
+			if (err || response.statusCode != 200) {
+				callback({'tts': "L'action a échoué"}); return;
+			}
+				callback({'tts': "L'infrarouge de la caméra est en mode nuit"});
+				return;
+			});
+		}
+		 
+		else if (data.commande == "enableprivacy" || data.commande == "enableprivacy") {
+			
+			 // Active le masque de la caméra
+			url = 'http://' + _authentification + _Ip_Camera + _Enable_PrivacyMask;
+			
+			var request = require('request');
+			request({ 'uri' : url }, function (err, response, body){					
+			if (err || response.statusCode != 200) {
+				callback({'tts': "L'action a échoué"}); return;
+			}
+				callback({'tts': "Le masque de la caméra est actif"});
+				return;
+			});
+		}
+		 
+		else if (data.commande == "disableprivacy" || data.commande == "disableprivacy") {
+			
+			 // Désactive le masque de la caméra
+			url = 'http://' + _authentification + _Ip_Camera + _Disable_PrivacyMask;
+			
+			var request = require('request');
+			request({ 'uri' : url }, function (err, response, body){					
+			if (err || response.statusCode != 200) {
+				callback({'tts': "L'action a échoué"}); return;
+			}
+				callback({'tts': "Le masque de la caméra est actif"});
+				return;
+			});
+		}
 
 		else if (data.commande == "affiche" || data.commande == "affiche") {
+			
 			// Affichage la 'vue' de la camera dans vlc
 			SARAH.remote({ 'run' : _Player, 'runp' : _Protocol + '://' + _authentification + _Ip_Camera + _stream});
-			return callback({'tts': "J'ai affichai la caméra dans le lecteur multimédia."});
+			return callback({'tts': "J'ai affiché la caméra dans le lecteur multimédia."});
 
 		} else {
-		
-			// Envoi de la requete
 
 			var request = require('request');
 			request({ 'uri' : url }, function (err, response, body){
@@ -109,7 +193,7 @@ exports.action = function(data, callback, config, SARAH){
 					return;
 				}
 					
-				return callback({'tts': "caméra en mouvement !"});
+				return callback({'tts': "caméra inaccessible !"});
 			});	
 		}
 	}
