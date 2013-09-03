@@ -1,0 +1,15 @@
+{
+  "modules" : { 
+    "vivotek"  : {
+      "description": "Permet d'afficher le flux vidéo dans vlc et de contrôler une caméra IP Vivotek",
+      "version" : "1.0",
+	  "adresse_ip" : "[FIXME]",
+	  "protocol" : "[FIXME]",
+	  "num_port" : "[FIXME]",
+	  "nom_flux" : "[FIXME]",
+	  "lien_capture" : "[FIXME]",
+	  "user" : "[FIXME]",
+	  "password" : "[FIXME]"
+    }
+  }
+}
