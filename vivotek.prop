@@ -2,14 +2,13 @@
   "modules" : { 
     "vivotek"  : {
       "description": "Permet d'afficher le flux vidéo dans vlc et de contrôler une caméra IP Vivotek",
-      "version" : "1.0",
-	  "adresse_ip" : "[FIXME]",
-	  "protocol" : "[FIXME]",
-	  "num_port" : "[FIXME]",
-	  "nom_flux" : "[FIXME]",
-	  "lien_capture" : "[FIXME]",
-	  "user" : "[FIXME]",
-	  "password" : "[FIXME]"
+      "version" : "1.2",
+	  "adresse_ip" : "Ex : 192.168.1.200",
+	  "protocol" : "Ex : rtsp ou http",
+	  "nom_flux" : "Ex : live.sdp",
+	  "lien_capture" : "Ex : cgi-bin/viewer/video.jpg",
+	  "user" : "Ex : admin",
+	  "password" : "Ex : admin"
     }
   }
 }

@@ -1,26 +1,21 @@
 <div id="vivotek">  
 	<div style="float:left;margin-right:20px;">
-  <img src="/assets/vivotek/camera-ip.png" height="249" width="249">
+  <img src="/assets/vivotek/camera-ip.png" height="160" width="160">
  </div>
-		<p>Ce plugin permet de visionner un flux vidéo d'une caméra IP Vivotek et de contrôler quelques fonctions</p> 
-		<p>Le plugin n'est qu'a son début et demande qu'à évoluer.</p>
-		<p>Vous devez installer <strong>vlc</strong> et <strong>firefox</strong> sur le serveur ou se trouve S.A.R.A.H.</p>
-		<p><br></p>
-			
 	<dl>
 		<dt><u>1) Fonction :</u></dt>  
 		<dd>
-			<p>Permet d'afficher un flux vidéo selon votre choix, et de contrôler quelques fonctionnalités de votre caméra Vivotek</br>
+			<p>Permet de visionner et contôler une caméra IP Vivotek</br>
 			<p><br></p>
 		</dd> 
 		
 		<dt><u>2) Paramétrage :</u></dt>  
 		<dd>
-			<p>Dans les paramètres du plugin, vous devez renseigner les informations par vos valeurs :</br></br>
+		    <p><strong>vlc </strong> et <strong>firefox</strong> doivent être installer sur le serveur ou se trouve S.A.R.A.H.</p>
+			<p>Dans les paramètres du plugin, renseigner les informations par vos valeurs :</br></br>
 			<ul type="square">
 			  <li><i>adresse_ip :</i> Adresse IP de votre caméra.</li>
 			  <li><i>protocol   :</i> protocol utilisé pour votre flux vidéo.</br><strong>Ex : </strong>pour les flux H.264, utilisé le protocol <strong>rtsp</strong>, pour un flux <strong>mjpg</strong> ou encore <strong>jpg</strong>utilisé le protocol <strong>http</strong></i>
-			  <li><i>num_port   :</i> Port de votre caméra.</li>
 			  <li><i>nom_flux   :</i> Nom du flux vidéo.</br><strong>Ex : </strong> live.sdp / stream.mjpg / video.jpg</li>
 			  <li><i>lien_capture   :</i> URL de la photo.</br><strong>Ex : </strong> "cgi-bin/viewer/video.jpg"</li>
 			  <li><i>user       :</i> Nom d'un utilisateur d'un groupe "<strong>administrator</strong>" de la caméra. Par défaut l'utilisateur est "<strong>root</strong>".</li>
@@ -32,14 +27,15 @@
 		<dt><u>3) Les commandes:</u></dt>
 		<dd>
 			<ul type="square">
-		<li>Sarah, affiche la caméra.</li>		
-	  	<li>Sarah, prends une photo avec la caméra.</li>
+		<li>Sarah, affiche la caméra. / SARAH, fermes l'affichage de la caméra.</li>		
+	  	<li>Sarah, prends une photo avec la caméra. / SARAH, ferme la photo de la caméra.</li>
 	  	<li>Sarah, redémarre la caméra.</li>
-	  	<li>Sarah, passe la caméra en mode auto.</li>
-	  	<li>Sarah, passe la caméra en mode jour.</li>
-	  	<li>Sarah, passe la caméra en mode nuit.</li>
-		<li>Sarah, active le masque de la caméra.</li>
-	  	<li>Sarah, désactive le masque de la caméra.</li>			
+	  	<li>Sarah, passe la caméra en mode jour/nuit/auto.</li>
+	  	<li>Sarah, démarre la ronde de la caméra. / Sarah, stop la ronde de la caméra.</li>
+		<li>Sarah, active le masque de la caméra. / Sarah, désactive le masque de la caméra.</li>
+		<li>Sarah, positionnes la caméra sur [preset]</br><strong>Editer le fichier vivotek.xml pour renseigner vos presets</li>
+		<li>Sarah, Va a [droite - gauche - haut - bas]</li>
+		<li>Sarah, Zoom [+/-]</li>
 			</ul></p>
 		</dd> 
 	</dl> 

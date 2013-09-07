@@ -1,23 +1,85 @@
-﻿<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="ruleVivotek" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
-  <rule id="ruleVivotek" scope="public">
-    <example>Sarah affiche la caméra</example>
-    <tag>out.action=new Object(); </tag>
-    <item>Sarah</item>
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="ruleVivotek" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+<rule id="ruleVivotek" scope="public">
+		<tag>out.action=new Object(); </tag>
+		<item >Sarah</item>
+		
+		<one-of>
+			<item><ruleref uri="#ruleVivotek_Commandes"/><tag>out.action = rules.ruleVivotek_Commandes;</tag><tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/vivotek";</tag></item>
+			<item><ruleref uri="#ruleVivotek_Preset"/><tag>out.action = rules.ruleVivotek_Preset;</tag><tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/vivotek";</tag></item>
+			<item><ruleref uri="#ruleVivotek_Move"/><tag>out.action = rules.ruleVivotek_Move;</tag><tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/vivotek";</tag></item>
+			<item><ruleref uri="#ruleVivotek_Zoom"/><tag>out.action = rules.ruleVivotek_Zoom;</tag><tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/vivotek";</tag></item>
+		</one-of>
+	</rule>  
 	
-     <one-of>
-	  	<item>affiche la caméra <tag>out.action.commande="affiche";</tag></item>		
-	  	<item>prends une photo avec la caméra<tag>out.action.commande="capture";</tag></item>
-	  	<item>redémarre la caméra<tag>out.action.commande="redemarre";</tag></item>
-	  	<item>passe la caméra en mode auto <tag>out.action.commande="irmodeauto";</tag></item>
-	  	<item>passe la caméra en mode jour <tag>out.action.commande="irmodejour";</tag></item>
-	  	<item>passe la caméra en mode nuit <tag>out.action.commande="irmodenuit";</tag></item>
-	  	
-	  	
-	  	<item>active le masque de la caméra<tag>out.action.commande="enableprivacy";</tag></item>
-	  	<item>désactive le masque de la caméra<tag>out.action.commande="disableprivacy";</tag></item>
-    </one-of> 
+	<rule id="ruleVivotek_Commandes" scope="public">
+		<tag>out.action=new Object(); </tag>
+		<one-of>
+			<item>affiche la cam�ra<tag>out.action.setparam="affiche";</tag></item>
+			<item>prends une photo avec la cam�ra<tag>out.action.setparam="capture";</tag></item>
+			<item>red�marre la cam�ra<tag>out.action.setparam="redemarre";</tag></item>
+			<item>passe la cam�ra en mode auto<tag>out.action.setparam="irmodeauto";</tag></item>
+			<item>passe la cam�ra en mode jour<tag>out.action.setparam="irmodejour";</tag></item>
+			<item>passe la cam�ra en mode nuit<tag>out.action.setparam="irmodenuit";</tag></item>
+			<item>active le masque de la cam�ra<tag>out.action.setparam="enableprivacy";</tag></item>
+			<item>daisactive le masque de la cam�ra<tag>out.action.setparam="disableprivacy";</tag></item>
+			<item>coupes l'affichage de la cam�ra.<tag>out.action.setparam="fermerplayer";</tag></item>
+			<item>fermes l'affichage de la cam�ra.<tag>out.action.setparam="fermerplayer";</tag></item>
+			<item>arr�tes l'affichage de la cam�ra.<tag>out.action.setparam="fermerplayer";</tag></item>
+			<item>stop l'affichage de la cam�ra.<tag>out.action.setparam="fermerplayer";</tag></item>
+			<item>ferme la photo de la cam�ra.<tag>out.action.setparam="fermerphoto";</tag></item>
+			<item>coupes la photo de la cam�ra.<tag>out.action.setparam="fermerphoto";</tag></item>
+			<item>active la ronde de la cam�ra.<tag>out.action.setparam="enablepatrol";</tag></item>
+			<item>d�marre la ronde de la cam�ra.<tag>out.action.setparam="enablepatrol";</tag></item>
+			<item>d�sactive la ronde de la cam�ra.<tag>out.action.setparam="disablepatrol";</tag></item>
+			<item>stop la ronde de la cam�ra.<tag>out.action.setparam="disablepatrol";</tag></item>
+			<item>arr�tes la ronde de la cam�ra.<tag>out.action.setparam="disablepatrol";</tag></item>
+		</one-of>
+	</rule>  
 	
-    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/vivotek";</tag>
-  </rule>
+    <rule id="ruleVivotek_Preset" scope="public">
+        <tag>out.action=new Object(); </tag>
+            <item>positionnes la cam�ra <tag>out.action.setparam="preset"</tag></item>
+				<one-of>
+                <item>sur la</item>
+                <item>sur le</item>
+            </one-of>
+            
+  <!-- Ajouter / Modifier les noms de vos presets, respectez les caractères-->    
+  <!-- les noms des presets doivent être identiques avec les noms enregistré dans votre caméra  -->
+        
+        <one-of>
+            <item>cuisine<tag> out.action.valpreset = "CUISINE"; </tag> </item>
+            <item>porte<tag> out.action.valpreset = "PORTE"; </tag> </item>
+            <item>table<tag> out.action.valpreset = "TABLE"; </tag> </item>
+        </one-of>
+		</rule>
+		    <rule id="ruleVivotek_Move" scope="public">
+        <tag>out.action=new Object(); </tag>
+            <item>va <tag>out.action.setparam="move"</tag></item>
+				<one-of>
+				<item>a</item>
+				<item>sur</item>
+                <item>sur la</item>
+                <item>en</item>
+            </one-of>
+        <one-of>
+            <item>droite<tag> out.action.valmove = "right"; </tag> </item>
+            <item>gauche<tag> out.action.valmove = "left"; </tag> </item>
+            <item>haut<tag> out.action.valmove = "up"; </tag> </item>
+			<item>bas<tag> out.action.valmove = "down"; </tag> </item>
+			<item>d�faut<tag> out.action.valmove = "home"; </tag> </item>		
+        </one-of>	
+    </rule>
+	
+	
+	 <rule id="ruleVivotek_Zoom" scope="public">
+        <tag>out.action=new Object(); </tag>
+            <item>zoom <tag>out.action.setparam="zoom"</tag></item>
+		<one-of>
+			<item>plus<tag> out.action.valzoom = "tele"; </tag> </item>
+            <item>moins<tag> out.action.valzoom = "wide"; </tag> </item>
+        </one-of>
+	</rule>
+		
+		
 </grammar>
-             
