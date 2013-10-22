@@ -1,19 +1,15 @@
-
 .plugin-gridster.vivotek .text {
-  background: #33A3EC;
-  left: 0; width: 100%; 
-  display: block;
-  text-align: center;
+		background: #0e7939;
+		color:#FFFFFF;
+		left: 0; width: 100%; 
+		display: block;
+		text-align: left;
 }
 
 .plugin-gridster.vivotek .logo {
-  left: 10px; 
-  width: 85%; 
+  		position: absolute;
+    	top: 20px; 
+    	left: 40px; 
+    	width: 70%; 
 }
 
-.plugin-gridster.vivotek .logo2 {
-  position: absolute;
-  top: 30px; 
-  left: 10px; 
-  width: 90%; 
-}

@@ -1,34 +1,38 @@
 <div id="vivotek">  
 	<div style="float:left;margin-right:20px;">
-  <img src="/assets/vivotek/camera-ip.png" height="160" width="160">
+  <img src="/assets/vivotek/images/camera.gif" height="160" width="160">
  </div>
 	<dl>
-		<dt><u>1) Fonction :</u></dt>  
 		<dd>
-			<p>Permet de visionner et contôler une caméra IP Vivotek</br>
+			<p><strong><i>Permet de visionner et contôler une caméra IP Vivotek</strong></i></br>
+			<p><br></p>
+			<p><br></p>
+			<p><br></p>
+			<p><br></p>
 			<p><br></p>
 		</dd> 
 		
-		<dt><u>2) Paramétrage :</u></dt>  
+		<dt><u>Paramétrage :</u></dt>  
 		<dd>
-		    <p><strong>vlc </strong> et <strong>firefox</strong> doivent être installer sur le serveur ou se trouve S.A.R.A.H.</p>
-			<p>Dans les paramètres du plugin, renseigner les informations par vos valeurs :</br></br>
+		    <p><strong>vlc </strong> doit être installé sur le serveur ou se trouve S.A.R.A.H.</p>
+			<p>Dans les paramètres du plugin, renseigner les informations :</br></br>
 			<ul type="square">
-			  <li><i>adresse_ip :</i> Adresse IP de votre caméra.</li>
-			  <li><i>protocol   :</i> protocol utilisé pour votre flux vidéo.</br><strong>Ex : </strong>pour les flux H.264, utilisé le protocol <strong>rtsp</strong>, pour un flux <strong>mjpg</strong> ou encore <strong>jpg</strong>utilisé le protocol <strong>http</strong></i>
-			  <li><i>nom_flux   :</i> Nom du flux vidéo.</br><strong>Ex : </strong> live.sdp / stream.mjpg / video.jpg</li>
-			  <li><i>lien_capture   :</i> URL de la photo.</br><strong>Ex : </strong> "cgi-bin/viewer/video.jpg"</li>
-			  <li><i>user       :</i> Nom d'un utilisateur d'un groupe "<strong>administrator</strong>" de la caméra. Par défaut l'utilisateur est "<strong>root</strong>".</li>
-			  <li><i>password   :</i> Mot de passe du compte utilisateur</li>
+			  <li><b>adresse_ip :</b> 192.168.x.x</li>
+			  <li><b>protocol   :</b> protocol utilisé par le flux vidéo.</br>Pour les flux <i>H.264</i>, utilisé le protocol <strong>rtsp</strong>, pour un flux <i>mjpg</i> ou encore <i>jpg</i> utilisé le protocol : <strong>http</strong></i>
+			  <li><b>nom_flux   :</b> Nom du flux vidéo.</br>/live.sdp - /stream.mjpg</li>
+			  <li><b>lien_capture   :</b> URL de la photo.</br>/cgi-bin/viewer/video.jpg</li>
+			  <li><b>user       :</b> utilisateur de la caméra. Par défaut l'utilisateur est "<i>root</i>".</li>
+			  <li><b>password   :</b> Mot de passe du compte</li>
+			  <li><b>systeme   :</b> windows - linux</li>
 			</ul></p>
 			<p><br></p>
 		</dd>
 		
-		<dt><u>3) Les commandes:</u></dt>
+		<dt><u>Les commandes:</u></dt>
 		<dd>
 			<ul type="square">
 		<li>Sarah, affiche la caméra. / SARAH, fermes l'affichage de la caméra.</li>		
-	  	<li>Sarah, prends une photo avec la caméra. / SARAH, ferme la photo de la caméra.</li>
+	  	<li>Sarah, prends une photo avec la caméra.</li>
 	  	<li>Sarah, redémarre la caméra.</li>
 	  	<li>Sarah, passe la caméra en mode jour/nuit/auto.</li>
 	  	<li>Sarah, démarre la ronde de la caméra. / Sarah, stop la ronde de la caméra.</li>

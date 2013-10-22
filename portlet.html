@@ -1,7 +1,24 @@
+<h3 class='default'><%= key %> - <%= module.version %></h3>
 <% stylesheet('assets/'+key+'/portlet.css') %>
-<div class="logo">
-  <a href="http://www.eco-domodom.fr" target="blank"><img src="/assets/vivotek/logo_eco-domodom.png"></a>
+<% 
+	var ConnectCam = SARAH.ConfigManager.getModule(key); 
+	var Connexion  = ConnectCam.Connexion(SARAH.ConfigManager.getConfig());
+	var NameVivotek = SARAH.ConfigManager.getModule(key); 
+  	var NameCam  = NameVivotek.NameCam(SARAH.ConfigManager.getConfig()); 
+  	var RefVivotek = SARAH.ConfigManager.getModule(key); 
+  	var RefCam  = RefVivotek.RefCam(SARAH.ConfigManager.getConfig()); 
+%>
+
+<% if (Connexion !== 'inactive') { %>
+<div class="logo"> <a href="sarah/vivotek"><img src="/assets/vivotek/images/camera-ip-ok.png"></a></div>
+<% } else { %>
+<div class="logo"> <a href="sarah/vivotek"><img src="/assets/vivotek/images/camera-ip-nok.png"></a></div>
+<% } %>
+<div> 
+<br>
+<br>
+<br>
+  <br/><b>Vivotek :</b> <%= RefCam %>
+  <br/><%= NameCam %>
 </div>
-<div class="logo2">
-<img src="/assets/vivotek/camera-ip.png">
-</div>
+  
