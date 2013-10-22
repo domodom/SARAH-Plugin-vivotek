@@ -43,6 +43,14 @@ exports.action = function(data, callback, config, SARAH) {
 		run_viewer_command = 'capture';
 		parle = 'La photo à été enregistrée dans le répertoire du pluguine. ';
 		break;
+	case 'EventEnable':
+		cgi_command = 'event_i0_enable=1';
+		parle = 'L\'événement est en cours d\'éxécution. ';
+		break;
+	case 'EventDisable':
+		cgi_command = 'event_i0_enable=0';
+		parle = 'L\'événement est maintenant arrété. ';
+		break;
 	case 'redemarre':
 		cgi_command = 'system_reset=0';
 		parle = 'La caméra est en cours de redémarrage. ';
@@ -302,6 +310,25 @@ exports.action = function(data, callback, config, SARAH) {
 	}
 }
 
+function addtojson(request,newone){
+	var fs = require('fs');
+	var fileJSON = __dirname + '/vivotek.json';
+	
+	// Create new request with data in order:
+	var newrequest={};
+	newrequest.system_hostname=NameCam;
+	if (fs.existsSync(fileJSON)) {json = JSON.parse(fs.readFileSync(fileJSON,'utf8'));}	
+			json.AllRequest.splice(0,1); 			// Delete existing request
+	if (newone)	
+		{json.AllRequest.unshift({"request":newrequest});}
+	else		
+		{json.AllRequest.push({"request":newrequest});}
+	fs.writeFileSync(fileJSON, JSON.stringify(json, null, 4) , 'utf8');
+} 
+
+
+
+
 
 		var NameCam = function (config) {
 		var config = config.modules.vivotek;
@@ -320,6 +347,10 @@ exports.action = function(data, callback, config, SARAH) {
 			}
 });
 		return NameCam;
+//			var newjson={"request":{}};
+//			newjson.request.system_hostname=NameCam;
+//			addtojson(newjson,true);
+
 		
 }
 

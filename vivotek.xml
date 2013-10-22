@@ -40,6 +40,8 @@
 			<item>désactive la ronde de la caméra.<tag>out.action.setparam="disablepatrol";</tag></item>
 			<item>stop la ronde de la caméra.<tag>out.action.setparam="disablepatrol";</tag></item>
 			<item>arrétes la ronde de la caméra.<tag>out.action.setparam="disablepatrol";</tag></item>
+			<item>active l'alarme de la camera<tag>out.action.setparam="EventEnable";</tag></item>
+			<item>désactive l'alarme de la camera<tag>out.action.setparam="EventDisable";</tag></item>
 		</one-of>
 	</rule>  
 
